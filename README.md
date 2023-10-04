@@ -87,7 +87,6 @@ sb.heatmap(df.corr(),annot = True)
 ```
 # OUTPUT
 - <B>Diabetes.csv</B>
-  =
 <p>Before Data Cleaning</p>
 <br><img src="https://github.com/Janarthanan2/ODD2023-DataScience-Ex-03/assets/119393515/91f8d1c2-9cea-4360-9647-b4a200b5eafe" width="250" height="250">
 <br><p>After Data Cleaning</p>
@@ -100,7 +99,6 @@ sb.heatmap(df.corr(),annot = True)
 <br><img src="https://github.com/Janarthanan2/ODD2023-Datascience-Ex-04/assets/119393515/8b329a1d-fce5-463f-8b26-a24725c8ea84" width="350" height="350">
 
 - <B>SuperStore.csv</B>
-  =
 <p>Before Data Cleaning</p>
 <br><img src="https://github.com/Janarthanan2/ODD2023-Datascience-Ex-04/assets/119393515/0f1b50e5-aec8-4350-8636-b4b0b7197a30" width="250" height="250">
 <br><p>After Data Cleaning</p>
