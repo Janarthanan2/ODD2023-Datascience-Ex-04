@@ -23,6 +23,61 @@ Find the pairwise correlation of all columns in the dataframe.corr()
 Save the final data set into the file
 
 # CODE
+- <B>Diabetes.csv</B>
 ```python
+import pandas as pd
+import numpy as np
+import seaborn as sb
+from scipy import stats
+import matplotlib.pyplot as plt
+df = pd.read_csv("/content/diabetes.csv")
+df.info()
+df.isnull().sum()
+sb.boxplot(data=df)
 
+# DATA CLEANING
+z = np.abs(stats.zscore(df['Glucose']))
+dfc=df[(z<2)]
+z = np.abs(stats.zscore(dfc['BloodPressure']))
+dfc=dfc[(z<2)]
+z = np.abs(stats.zscore(dfc['SkinThickness']))
+dfc=dfc[(z<3)]
+z = np.abs(stats.zscore(dfc['BMI']))
+dfc=dfc[(z<2)]
+z = np.abs(stats.zscore(dfc['Insulin']))
+dfc=dfc[(z<2)]
+z = np.abs(stats.zscore(dfc['DiabetesPedigreeFunction']))
+dfc=dfc[(z<2)]
+z = np.abs(stats.zscore(dfc['Age']))
+dfc=dfc[(z<2)]
+z = np.abs(stats.zscore(dfc['Outcome']))
+dfc=dfc[(z<3)]
+
+sb.boxplot(data=dfc)
+plt.figure(figsize = (14,6))
+sb.scatterplot(x = 'Glucose',y='BloodPressure',data = df)
+sb.scatterplot(x = 'Glucose',y='Insulin',data = df)
+sb.scatterplot(x = 'Glucose',y='DiabetesPedigreeFunction',data = df)
+sb.scatterplot(x = 'Glucose',y='Age',data = df)
+sb.heatmap(df.corr(),annot = True)
+```
+- <B>SuperStore.csv</B>
+```python
+import pandas as pd
+import numpy as np
+import seaborn as sb
+from scipy import stats
+import matplotlib.pyplot as plt
+df = pd.read_csv("/content/SuperStore.csv")
+df.info()
+df.isnull().sum()
+df['Postal Code'] = df['Postal Code'].fillna(value=df['Postal Code'].mode()[0])
+df.isnull().sum()
+sb.boxplot(data=df)
+z = np.abs(stats.zscore(df['Sales']))
+df = df[z<3]
+sb.boxplot(data=df['Sales'])
+sb.scatterplot(x = 'Postal Code',y='Sales',data = df)
+sb.scatterplot(x = 'Row ID',y='Sales',data = df)
+sb.heatmap(df.corr(),annot = True)
 ```
